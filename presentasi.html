@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi E-Arsip PNM Bangka Belitung</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pnm-blue: #00539b;
+            --pnm-blue-dark: #003a6b;
+            --pnm-green: #00a651;
+            --pnm-green-light: #4cc47a;
+            --bg: #f8fafc;
+            --text: #0f2438;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            background: radial-gradient(circle at top right, rgba(0, 166, 81, 0.05), transparent),
+                        radial-gradient(circle at bottom left, rgba(0, 83, 155, 0.05), transparent);
+        }
+
+        .slide-content {
+            max-width: 1000px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 32px;
+            padding: 60px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--pnm-blue-dark);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--pnm-green);
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        li {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--pnm-green);
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .branding {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box {
+            background: linear-gradient(135deg, var(--pnm-green), var(--pnm-blue));
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .branding-text {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--pnm-blue);
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 40px;
+            right: 60px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .btn {
+            background: var(--pnm-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 83, 155, 0.3);
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 40px;
+            left: 60px;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .feature-item h3 {
+            color: var(--pnm-blue);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="branding">
+        <div class="logo-box">PNM</div>
+        <div class="branding-text">E-Arsip Bangka Belitung</div>
+    </div>
+
+    <div class="presentation-container" id="container">
+        <!-- Slide 1: Judul -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h1>Transformasi Digital Pengarsipan Mekaar</h1>
+                <h2>E-Arsip PNM Bangka Belitung</h2>
+                <p>Solusi modern untuk manajemen dokumen yang aman, terpusat, dan efisien.</p>
+                <div style="margin-top: 40px; font-weight: 600; color: var(--pnm-blue-dark);">
+                    PT Permodalan Nasional Madani<br>
+                    Cabang Bangka Belitung &copy; 2026
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Latar Belakang -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h2>Mengapa E-Arsip?</h2>
+                <p>Menjawab tantangan operasional di setiap Unit Mekaar:</p>
+                <ul>
+                    <li>Risiko kehilangan atau kerusakan dokumen fisik.</li>
+                    <li>Kesulitan pencarian data secara cepat dan akurat.</li>
+                    <li>Kebutuhan akses data tanpa instalasi software (Zero-client).</li>
+                    <li>Isolasi data antar unit untuk keamanan privasi nasabah.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 3: Dashboard Enterprise -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h2>Visualisasi & Kontrol Data</h2>
+                <p>Dashboard interaktif memberikan ringkasan operasional dalam sekejap:</p>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>KPI Real-time</h3>
+                        <p style="font-size: 14px;">Statistik total dokumen, pengguna aktif, dan kapasitas penyimpanan secara live.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Grafik Chart.js</h3>
+                        <p style="font-size: 14px;">Distribusi arsip per kategori (Daily Closing, Denom, FP4) yang mudah dipahami.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Fitur Keamanan -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h2>Keamanan & Integritas Data</h2>
+                <p>Membangun kepercayaan melalui sistem perlindungan berlapis:</p>
+                <ul>
+                    <li><strong>Multi-tenancy:</strong> Staff Unit hanya dapat melihat data milik unitnya sendiri.</li>
+                    <li><strong>RBAC:</strong> Pemisahan peran yang jelas antara Superadmin dan Staff Unit.</li>
+                    <li><strong>CSRF Protection:</strong> Melindungi transaksi data dari serangan pihak luar.</li>
+                    <li><strong>Audit Log:</strong> Pencatatan riwayat unggahan dan aktivitas dokumen.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 5: Pengalaman Pengguna -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h2>User Experience (UX) Premium</h2>
+                <p>Didesain untuk kenyamanan dan produktivitas kerja:</p>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>Global Search</h3>
+                        <p style="font-size: 14px;">Pencarian dokumen instan dari mana saja tanpa pindah halaman.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Responsive UI</h3>
+                        <p style="font-size: 14px;">Tampilan optimal di laptop maupun tablet dengan Sidebar Toggle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Arsitektur Sistem -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h2>Infrastruktur & Teknologi</h2>
+                <p>Dibangun dengan teknologi yang stabil dan mudah dirawat:</p>
+                <ul>
+                    <li><strong>Zero-Client Access:</strong> Akses penuh via browser tanpa ribet instalasi.</li>
+                    <li><strong>Optimized Storage:</strong> Struktur folder yang terorganisir per unit dan kategori.</li>
+                    <li><strong>Modern UI Stack:</strong> Inter font, Glassmorphism, dan Animasi halus.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 7: Roadmap Masa Depan -->
+        <section class="slide">
+            <div class="slide-content glass-card">
+                <h2>Langkah Selanjutnya</h2>
+                <p>Terus berinovasi untuk mendukung operasional PNM:</p>
+                <ul>
+                    <li>Integrasi dengan sistem inti Mekaar.</li>
+                    <li>Fitur Preview Dokumen (PDF/Gambar) langsung di browser.</li>
+                    <li>Notifikasi otomatis untuk dokumen yang belum lengkap.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 8: Penutup -->
+        <section class="slide">
+            <div class="slide-content glass-card" style="text-align: center;">
+                <h1>Terima Kasih</h1>
+                <h2 style="color: var(--pnm-blue);">Solusi Tepat, Kerja Cepat, Data Aman.</h2>
+                <p>E-Arsip PNM Bangka Belitung siap mendukung kesuksesan kita bersama.</p>
+                <button class="btn" onclick="location.href='index.php'">Buka Website</button>
+            </div>
+        </section>
+    </div>
+
+    <div class="slide-number" id="slideNum">Slide 1 / 8</div>
+
+    <div class="controls">
+        <button class="btn" onclick="prevSlide()">Sebelumnya</button>
+        <button class="btn" onclick="nextSlide()">Selanjutnya</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 8;
+        const container = document.getElementById('container');
+        const slideNum = document.getElementById('slideNum');
+
+        function updateSlide() {
+            container.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            slideNum.textContent = `Slide ${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Blokir akses langsung ke file upload.
+# File hanya boleh diunduh melalui master/download.php
+<FilesMatch ".*">
+    Require all denied
+</FilesMatch>
